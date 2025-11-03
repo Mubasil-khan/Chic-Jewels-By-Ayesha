@@ -12,7 +12,10 @@ const Categories = () => {
 
   return (
     <div className="container mx-auto p-4 sm:p-0 my-8 block">
-      <h2 className="text-3xl text-gray-600 font-medium mb-4">Categories</h2>
+      <h4 className="text-3xl font-semibold text-zinc-600 flex flex-col gap-2 w-36 items-end my-5">
+        Categories
+        <div className="border-2 w-18 rounded text-[#4FBF8B]"></div>
+      </h4>
       <div className="flex items-center gap-2 justify-between">
         <Swiper
           spaceBetween={20}

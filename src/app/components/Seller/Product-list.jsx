@@ -5,9 +5,8 @@ import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 
 const Productlist = () => {
-  const { fetchproducts } = useAppContext();
-  const { product } = useAppContext();
-  // console.log("productproduct", product);
+  const { fetchproducts, product } = useAppContext();
+
   const productStock = async (id, instock) => {
     try {
       const { data } = await axios.post(
@@ -18,6 +17,24 @@ const Productlist = () => {
       if (data.success) {
         fetchproducts();
         toast.success("Stock updated ");
+      } else {
+        toast.error("Update issue ❌");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const bestSellers = async (id, BestSellers) => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/product/bestSellers`,
+        { id, BestSellers },
+        { withCredentials: true }
+      );
+      if (data.success) {
+        fetchproducts();
+        toast.success("bestSellers updated ");
       } else {
         toast.error("Update issue ❌");
       }
@@ -40,12 +57,18 @@ const Productlist = () => {
                   Selling Price
                 </th>
                 <th className="px-4 py-3 font-semibold truncate">In Stock</th>
+                <th className="px-4 py-3 font-semibold truncate">
+                  Best Sellers
+                </th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-500">
               {Array.isArray(product) && product.length > 0 ? (
                 product.map((product, index) => (
-                  <tr key={index} className="border-t border-gray-500/20">
+                  <tr
+                    key={product._id || index}
+                    className="border-t border-gray-500/20"
+                  >
                     <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                       <div className="border border-gray-300 rounded overflow-hidden">
                         <img
@@ -70,6 +93,20 @@ const Productlist = () => {
                           checked={product.instock}
                           onChange={() =>
                             productStock(product._id, !product.instock)
+                          }
+                        />
+                        <div className="w-12 h-7 bg-slate-300 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-200"></div>
+                        <span className="dot absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
+                      </label>
+                    </td>
+                    <td className="px-4 py-3">
+                      <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={product.BestSellers}
+                          onChange={() =>
+                            bestSellers(product._id, !product.BestSellers)
                           }
                         />
                         <div className="w-12 h-7 bg-slate-300 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-200"></div>

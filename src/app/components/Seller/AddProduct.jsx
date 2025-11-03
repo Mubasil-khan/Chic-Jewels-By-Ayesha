@@ -14,7 +14,7 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
 
-  const { fetchproducts } = useAppContext();
+  const { fetchproducts, setProducts, product } = useAppContext();
 
   const onSubmitHandal = async (event) => {
     try {
@@ -40,8 +40,13 @@ const AddProduct = () => {
       );
 
       if (data.success) {
-        toast("add");
-        fetchproducts();
+        toast(data.message);
+        setFile([]);
+        setPrice("");
+        setCategory("");
+        setDescription("");
+        setName("");
+        setOfferPrice("");
       } else {
         toast("problem");
       }
@@ -49,6 +54,9 @@ const AddProduct = () => {
       toast("catching error");
     }
   };
+  useEffect(() => {
+    fetchproducts();
+  }, [product]);
 
   return (
     <div className="flex flex-col justify-between bg-white">
@@ -141,7 +149,15 @@ const AddProduct = () => {
             value={category}
           >
             <option value="">Select Category</option>
-            {["Electronics", "Clothing", "Accessories"].map((item, index) => (
+            {[
+              "Vegetables",
+              "Fruits",
+              "Drinks",
+              "Instant",
+              "Dairy",
+              "Bakery",
+              "Grains",
+            ].map((item, index) => (
               <option key={index} value={item}>
                 {item}
               </option>

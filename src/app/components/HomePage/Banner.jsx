@@ -26,7 +26,7 @@ const Banner = () => {
         </h4>
         <div className="flex gap-8 items-center">
           <Link
-            href=""
+            href="/allproduct"
             className="bg-[#44AE7C] px-8 py-1.5 rounded-md text-white"
           >
             Shop Now

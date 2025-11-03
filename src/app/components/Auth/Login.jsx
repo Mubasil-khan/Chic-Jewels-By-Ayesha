@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const route = useRouter();
 
   const handalLogin = async (e) => {
     e.preventDefault();
@@ -22,6 +25,7 @@ const Login = () => {
 
       if (login.data.success) {
         toast.success(login.data.message);
+        route.push("/");
       } else {
         toast.error(login.data.message);
       }

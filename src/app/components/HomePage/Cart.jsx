@@ -1,5 +1,11 @@
 "use client";
-import { ArrowLeft } from "lucide-react";
+import {
+  ArrowLeft,
+  ShoppingCart,
+  ArrowRight,
+  ShoppingBag,
+  Heart,
+} from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { dummyAddress } from "../../../../public/assets";
 import { useAppContext } from "@/app/context/AppContext";
@@ -7,6 +13,8 @@ import Link from "next/link";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
+// import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Cart = () => {
   const { cart, product, removeCart, updateCart, user, setCart } =
@@ -93,7 +101,16 @@ const Cart = () => {
     }
   }, [user]);
 
-  return (
+  const subtotal = cartArray.reduce(
+    (acc, item) => acc + item.offerPrice * item.quantity,
+    0
+  );
+
+  const shipping = subtotal > 100 ? 0 : 10; // Free shipping
+  const tax = (subtotal * 0.02).toFixed(2); // 2% tax
+  const total = (subtotal + parseFloat(tax) + shipping).toFixed(2);
+
+  return cartArray.length > 0 ? (
     <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
       <div className="flex-1 max-w-4xl">
         <h1 className="text-3xl font-medium mb-6">
@@ -172,10 +189,13 @@ const Cart = () => {
           </div>
         ))}
 
-        <button className="group cursor-pointer flex items-center mt-8 gap-2 text-[#4FBF8B] font-medium">
+        <Link
+          href="/allproduct"
+          className="group  flex items-center mt-8 gap-2 text-[#4FBF8B] font-medium"
+        >
           <ArrowLeft />
           Continue Shopping
-        </button>
+        </Link>
       </div>
 
       <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
@@ -246,19 +266,21 @@ const Cart = () => {
         <div className="text-gray-500 mt-4 space-y-2">
           <p className="flex justify-between">
             <span>Price</span>
-            <span>$20</span>
+            <span>${subtotal.toFixed(2)}</span>
           </p>
           <p className="flex justify-between">
             <span>Shipping Fee</span>
-            <span className="text-[#4FBF8B]">Free</span>
+            <span className="text-[#4FBF8B]">
+              {shipping === 0 ? "Free" : `$${shipping}`}
+            </span>
           </p>
           <p className="flex justify-between">
             <span>Tax (2%)</span>
-            <span>$20</span>
+            <span>${tax}</span>
           </p>
           <p className="flex justify-between text-lg font-medium mt-3">
             <span>Total Amount:</span>
-            <span>$20</span>
+            <span>${Math.round(total)}</span>
           </p>
         </div>
 
@@ -270,6 +292,182 @@ const Cart = () => {
         </button>
       </div>
       <ToastContainer />
+    </div>
+  ) : (
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-[#EDF8F3]/30">
+      <div className="container mx-auto px-4 py-8 md:py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-light tracking-tight text-gray-900 mb-4"
+          >
+            Your Cart
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-20 h-1 bg-gradient-to-r from-[#EDF8F3] to-emerald-200 mx-auto rounded-full"
+          />
+        </div>
+
+        {/* Empty Cart Illustration */}
+        <div className="max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
+          >
+            {/* Main Card */}
+            <div className="bg-white/70 backdrop-blur-sm border border-gray-100 rounded-3xl p-12 md:p-16 shadow-xl shadow-gray-100/50">
+              {/* Custom Cart Icon with Animation */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.5,
+                  type: "spring",
+                  stiffness: 200,
+                }}
+                className="relative mx-auto mb-8 w-32 h-32 md:w-40 md:h-40"
+              >
+                {/* Background Circle */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#EDF8F3] to-emerald-100 rounded-full opacity-20 animate-pulse" />
+
+                {/* Cart Icon Container */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative">
+                    {/* Shopping Bag */}
+                    <ShoppingBag className="w-16 h-16 md:w-20 md:h-20 text-emerald-400 stroke-[1.5]" />
+
+                    {/* Floating Hearts */}
+                    <motion.div
+                      animate={{
+                        y: [-5, -15, -5],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute -top-6 -right-6"
+                    >
+                      <Heart className="w-6 h-6 text-rose-300 fill-current" />
+                    </motion.div>
+
+                    <motion.div
+                      animate={{
+                        y: [-3, -12, -3],
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5,
+                      }}
+                      className="absolute -bottom-4 -left-4"
+                    >
+                      <Heart className="w-4 h-4 text-pink-300 fill-current" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Empty State Text */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-center space-y-6"
+              >
+                <h2 className="text-2xl md:text-3xl font-light text-gray-800 tracking-tight">
+                  Your cart is waiting
+                </h2>
+
+                <p className="text-lg text-gray-500 leading-relaxed max-w-md mx-auto">
+                  Discover amazing products and fill your cart with items you'll
+                  love
+                </p>
+
+                {/* Call to Action */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="pt-6 flex justify-center"
+                >
+                  <Link
+                    href="/allproduct"
+                    className="group flex items-center gap-2  bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white border-0 rounded-full px-8 py-3 text-lg font-medium tracking-tight shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    Start Shopping
+                    <ArrowRight className=" w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Decorative Elements */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1.5 }}
+              className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-[#EDF8F3] to-emerald-200 rounded-full blur-sm opacity-60"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1.7 }}
+              className="absolute -bottom-6 -left-6 w-12 h-12 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full blur-sm opacity-40"
+            />
+          </motion.div>
+        </div>
+
+        {/* Additional Features Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+        >
+          <div className="text-center p-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-gray-100">
+            <div className="w-12 h-12 bg-[#EDF8F3] rounded-full flex items-center justify-center mx-auto mb-4">
+              <ShoppingBag className="w-6 h-6 text-emerald-600" />
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Easy Shopping</h3>
+            <p className="text-sm text-gray-500">
+              Browse and add items with just a click
+            </p>
+          </div>
+
+          <div className="text-center p-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-gray-100">
+            <div className="w-12 h-12 bg-[#EDF8F3] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Heart className="w-6 h-6 text-emerald-600" />
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Save Favorites</h3>
+            <p className="text-sm text-gray-500">
+              Keep track of items you love
+            </p>
+          </div>
+
+          <div className="text-center p-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-gray-100">
+            <div className="w-12 h-12 bg-[#EDF8F3] rounded-full flex items-center justify-center mx-auto mb-4">
+              <ArrowRight className="w-6 h-6 text-emerald-600" />
+            </div>
+            <h3 className="font-medium text-gray-800 mb-2">Quick Checkout</h3>
+            <p className="text-sm text-gray-500">
+              Seamless and secure payment process
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

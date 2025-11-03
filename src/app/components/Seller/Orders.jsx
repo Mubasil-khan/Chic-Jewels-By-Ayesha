@@ -6,6 +6,7 @@ import { assets } from "../../../../public/assets";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
@@ -16,7 +17,6 @@ const Orders = () => {
       );
       if (data.success) {
         setOrders(Array.isArray(data.orders) ? data.orders : [data]);
-        console.log("seller Order", data.orders);
       }
     } catch (error) {
       console.error(error.message);
@@ -47,7 +47,7 @@ const Orders = () => {
               src={boxIcon}
               alt="boxIcon"
             /> */}
-            <>
+            <div className="flex flex-col  justify-center gap-1 h-44 overflow-y-auto hide-scrollbar">
               {order.items?.map((item, index) => (
                 <div key={index} className="flex flex-col justify-center">
                   <p className="font-medium">
@@ -62,7 +62,7 @@ const Orders = () => {
                   </p>
                 </div>
               ))}
-            </>
+            </div>
           </div>
 
           <div className="text-sm">

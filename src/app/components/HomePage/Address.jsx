@@ -70,6 +70,41 @@ const Address = () => {
     }
   }, []);
 
+  const getAddressFromCoords = async (lat, lng) => {
+    try {
+      const response = await fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=964814bd0d934091981b1064c1d4b435`
+      );
+      const data = await response.json();
+      if (data.results.length > 0) {
+        const components = data.results[0].components;
+        return {
+          city: components.city || components.town || "",
+          state: components.state || "",
+          country: components.country || "",
+          zipcode: components.postcode || "",
+          street: components.road || "",
+        };
+      }
+    } catch (error) {
+      console.error("Error fetching address:", error);
+    }
+  };
+
+  const fetchLocation = () => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+      const locationData = await getAddressFromCoords(latitude, longitude);
+
+      if (locationData) {
+        setAddress((prev) => ({
+          ...prev,
+          ...locationData,
+        }));
+      }
+    });
+  };
+
   return (
     <div className="container mx-auto my-10 p-10">
       <p className="text-gray-400 text-2xl md:text-3xl">
@@ -147,9 +182,18 @@ const Address = () => {
             handleChange={handleChange}
             address={address}
           />
-          <button className="uppercase bg-[#4FBF8B] mt-3 rounded hover:bg-[#47af7f] py-3 transition cursor-pointer text-white w-full">
-            Save Address
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={fetchLocation}
+              className="uppercase bg-zinc-500 mt-3 rounded py-3 transition cursor-pointer text-white w-full"
+            >
+              Use Current Location
+            </button>
+            <button className="uppercase bg-[#4FBF8B] mt-3 rounded hover:bg-[#47af7f] py-3 transition cursor-pointer text-white w-full">
+              Save Address
+            </button>
+          </div>
         </form>
         <div className="w-full flex items-center">
           <Image

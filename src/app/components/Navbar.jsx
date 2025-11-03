@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, ShoppingCart, X } from "lucide-react";
@@ -8,11 +8,12 @@ import { useAppContext } from "../context/AppContext";
 import { assets } from "../../../public/assets";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
-  const { user, setuser } = useAppContext();
+  const { user, setuser, setSearch, search } = useAppContext();
 
   const logout = async (e) => {
     e.preventDefault();
@@ -34,19 +35,59 @@ const Navbar = () => {
     }
   };
 
-  console.log("user", user);
+  const [hide, setHide] = useState(true);
 
   const pathName = usePathname();
+
+  const router = useRouter();
+
+  if (search && search.length > 0) {
+    router.push("/allproduct");
+  }
+
+  const [timeLeft, setTimeLeft] = useState(594); // 600s = 10 min
+
+  useEffect(() => {
+    if (!hide) return; // stop when banner hidden
+    if (timeLeft <= 0) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, hide]);
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, "0");
+    const s = (seconds % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
+  };
+
   return (
-    <div className=" shadow-lg">
-      <div class="text-center   text-white font-medium py-2 bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A]">
-        <p>
-          Exclusive Price Drop! Hurry,{" "}
-          <span class="underline underline-offset-2">Offer Ends Soon!</span>
-        </p>
-      </div>
-      <div className="flex justify-between items-center container mx-auto p-4 md:p-0 md:py-4  py-4">
-        <Link href="">
+    <div className="bg-[#EDF8F3] shadow-lg">
+      {hide && (
+        <div class="text-center    text-white font-medium py-2 bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A]">
+          <p className="relative">
+            Exclusive Price Drop! Hurry,{" "}
+            <span class="underline underline-offset-2">
+              Offer Ends in {formatTime(timeLeft)} !
+            </span>
+            <div
+              className="absolute inset-0 flex items-center justify-end mr-20 cursor-pointer"
+              onClick={() => {
+                setHide(false);
+              }}
+            >
+              <X className="" />
+            </div>
+          </p>
+        </div>
+      )}
+      <div className="flex justify-between  items-center container mx-auto p-4 md:p-0 md:py-4  py-4">
+        <Link href="/">
           <Image src="/logo.svg" height={160} width={160} alt="Logo" />
         </Link>
 
@@ -55,7 +96,7 @@ const Navbar = () => {
             <Link
               href="/"
               className={`  ${
-                pathName
+                pathName === "/"
                   ? "text-[#44AE7C] text-lg font-semibold"
                   : "text-zinc-500 text-md"
               }`}
@@ -64,18 +105,52 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="" className="text-lg text-zinc-500">
-              Home
+            <Link
+              href=""
+              className={`  ${
+                pathName === ""
+                  ? "text-[#44AE7C] text-lg font-semibold"
+                  : "text-zinc-500 text-md"
+              }`}
+            >
+              Categories
             </Link>
           </li>
           <li>
-            <Link href="/cart" className="text-lg text-zinc-500 ">
+            <Link
+              href="/cart"
+              className={`  ${
+                pathName === "/cart"
+                  ? "text-[#44AE7C] text-lg font-semibold"
+                  : "text-zinc-500 text-md"
+              }`}
+            >
               cart
             </Link>
           </li>
+
           <li>
-            <Link href="" className="text-lg text-zinc-500">
-              Home
+            <Link
+              href="/allproduct"
+              className={`  ${
+                pathName === "/allproduct"
+                  ? "text-[#44AE7C] text-lg font-semibold"
+                  : "text-zinc-500 text-md"
+              }`}
+            >
+              All Product
+            </Link>
+          </li>
+          <li>
+            <Link
+              href=""
+              className={`  ${
+                pathName === ""
+                  ? "text-[#44AE7C] text-lg font-semibold"
+                  : "text-zinc-500 text-md"
+              }`}
+            >
+              Contact Us
             </Link>
           </li>
         </ul>
@@ -85,8 +160,10 @@ const Navbar = () => {
             type="search"
             name=""
             id=""
+            value={search}
             className="border border-zinc-400 py-1.5 px-4 rounded-lg outline-none hidden md:block"
             placeholder="Search Products"
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           {!user ? (

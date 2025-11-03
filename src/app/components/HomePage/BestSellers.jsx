@@ -25,7 +25,10 @@ const BestSellers = () => {
   return (
     product && (
       <div className="container mx-auto my-8 block">
-        <h2 className="text-3xl text-gray-600">Best Sellers</h2>
+        <h4 className="text-3xl font-semibold text-zinc-600 flex flex-col gap-2 w-39 items-end my-5">
+          Best Sellers
+          <div className="border-2 w-18 rounded text-[#4FBF8B]"></div>
+        </h4>
         <Swiper
           spaceBetween={30}
           className="mySwiper !flex !justify-between"
@@ -36,105 +39,107 @@ const BestSellers = () => {
             1300: { slidesPerView: 5 },
           }}
         >
-          {product.map((product) => (
-            <SwiperSlide className="!flex md:!justify-between !justify-center">
-              <div className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full">
-                <Link
-                  href={`/products/${product.category}/${product._id}`}
-                  className="group  flex items-center justify-center px-2"
-                >
-                  <img
-                    className="group-hover:scale-105 transition max-w-26 md:max-w-36"
-                    src={product.image[0]}
-                    alt={product.name}
-                  />
-                </Link>
+          {product
+            .filter((item) => item.BestSellers === true)
+            .map((product) => (
+              <SwiperSlide className="!flex md:!justify-between !justify-center">
+                <div className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full">
+                  <Link
+                    href={`/products/${product.category}/${product._id}`}
+                    className="group  flex items-center justify-center px-2"
+                  >
+                    <img
+                      className="group-hover:scale-105 transition max-w-26 md:max-w-36"
+                      src={product.image[0]}
+                      alt={product.name}
+                    />
+                  </Link>
 
-                <div className="text-gray-500/60 text-sm">
-                  <p>{product.category}</p>
-                  <p className="text-gray-700 font-medium text-lg truncate w-full">
-                    {product.name}
-                  </p>
-                  <div className="flex items-center gap-0.5">
-                    <Image
-                      src="/star_icon.svg"
-                      alt="rating"
-                      height={13}
-                      width={13}
-                    />
-                    <Image
-                      src="/star_icon.svg"
-                      alt="rating"
-                      height={13}
-                      width={13}
-                    />
-                    <Image
-                      src="/star_icon.svg"
-                      alt="rating"
-                      height={13}
-                      width={13}
-                    />
-                    <Image
-                      src="/star_icon.svg"
-                      alt="rating"
-                      height={13}
-                      width={13}
-                    />
-                    <Image
-                      src="/star_icon.svg"
-                      alt="rating"
-                      height={13}
-                      width={13}
-                    />
-                    <p>({product.rating})</p>
-                  </div>
-                  <div className="flex items-end justify-between mt-3">
-                    <p className="md:text-xl text-base font-medium text-[#4FBF8B]">
-                      ${product.offerPrice}{" "}
-                      <span className="text-gray-500/60 md:text-sm text-xs line-through">
-                        ${product.price}
-                      </span>
+                  <div className="text-gray-500/60 text-sm">
+                    <p>{product.category}</p>
+                    <p className="text-gray-700 font-medium text-lg truncate w-full">
+                      {product.name}
                     </p>
-                    <div
-                      className="text-[#4FBF8B]"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {!cart[product._id] ? (
-                        <button
-                          className="flex items-center justify-center cursor-pointer gap-1 bg-[#EDF8F3] border border-[#4FBF8B] md:w-[80px] w-[64px] h-[34px] rounded text-[#4FBF8B] font-medium"
-                          onClick={() => {
-                            addToCart(product._id);
-                          }}
-                        >
-                          <ShoppingCart className="h-4.5 w-4.5" /> Add
-                        </button>
-                      ) : (
-                        <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-[#EDF8F3] rounded select-none">
+                    <div className="flex items-center gap-0.5">
+                      <Image
+                        src="/star_icon.svg"
+                        alt="rating"
+                        height={13}
+                        width={13}
+                      />
+                      <Image
+                        src="/star_icon.svg"
+                        alt="rating"
+                        height={13}
+                        width={13}
+                      />
+                      <Image
+                        src="/star_icon.svg"
+                        alt="rating"
+                        height={13}
+                        width={13}
+                      />
+                      <Image
+                        src="/star_icon.svg"
+                        alt="rating"
+                        height={13}
+                        width={13}
+                      />
+                      <Image
+                        src="/star_icon.svg"
+                        alt="rating"
+                        height={13}
+                        width={13}
+                      />
+                      <p>({product.rating})</p>
+                    </div>
+                    <div className="flex items-end justify-between mt-3">
+                      <p className="md:text-xl text-base font-medium text-[#4FBF8B]">
+                        ${product.offerPrice}{" "}
+                        <span className="text-gray-500/60 md:text-sm text-xs line-through">
+                          ${product.price}
+                        </span>
+                      </p>
+                      <div
+                        className="text-[#4FBF8B]"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {!cart[product._id] ? (
                           <button
-                            onClick={() => {
-                              removeCart(product._id);
-                            }}
-                          >
-                            -
-                          </button>
-                          <span className="w-5 text-center">
-                            {cart[product._id]}
-                          </span>
-                          <button
+                            className="flex items-center justify-center cursor-pointer gap-1 bg-[#EDF8F3] border border-[#4FBF8B] md:w-[80px] w-[64px] h-[34px] rounded text-[#4FBF8B] font-medium"
                             onClick={() => {
                               addToCart(product._id);
                             }}
                           >
-                            +
+                            <ShoppingCart className="h-4.5 w-4.5" /> Add
                           </button>
-                        </div>
-                      )}
+                        ) : (
+                          <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-[#EDF8F3] rounded select-none">
+                            <button
+                              onClick={() => {
+                                removeCart(product._id);
+                              }}
+                            >
+                              -
+                            </button>
+                            <span className="w-5 text-center">
+                              {cart[product._id]}
+                            </span>
+                            <button
+                              onClick={() => {
+                                addToCart(product._id);
+                              }}
+                            >
+                              +
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     )

@@ -16,6 +16,8 @@ export const AppContextProvider = ({ children }) => {
   const [user, setuser] = useState(null);
   const [cart, setCart] = useState({});
 
+  const [search, setSearch] = useState("");
+
   const value = { seller, setSeller };
 
   const auth = async () => {
@@ -153,7 +155,9 @@ export const AppContextProvider = ({ children }) => {
         addToCart,
         updateCart,
         removeCart,
-        setCart
+        setCart,
+        search,
+        setSearch,
       }}
     >
       {children}

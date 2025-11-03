@@ -23,12 +23,12 @@ export default function RootLayout({ children }) {
     const pathname = usePathname();
 
     return (
-        <html lang="en">
+        <html lang="en" className="">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen !overflow-hidden`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased !h-[100vh] !overflow-hidden`}
             >
                 {pathname !== "/seller/login" && <SellerNavbar />}
-                <div className=" flex h-screen">
+                <div className="flex h-screen">
                     {pathname !== "/seller/login" && <div >
 
                         < SellerSidebar />
