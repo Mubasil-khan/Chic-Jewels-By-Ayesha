@@ -18,7 +18,7 @@ const sellerLogin = () => {
     try {
       event.preventDefault();
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/login`,
+        `https://chic-jewels-backend.onrender.com/seller/login`,
         { email, password },
         { withCredentials: true }
       );
