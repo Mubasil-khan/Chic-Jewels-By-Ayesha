@@ -18,7 +18,6 @@ const Categories = () => {
   console.log("All products:", product);
 
   const { categories } = useParams();
-  console.log("categoriescategories", categories);
 
   const categoryMap = {
     "organic-veggies": "Vegetables",
