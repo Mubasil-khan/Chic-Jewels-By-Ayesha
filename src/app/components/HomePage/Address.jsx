@@ -48,7 +48,7 @@ const Address = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/address/add`,
+        `https://chic-jewels-backend.onrender.com/address/add`,
         { address, userId: user._id },
         { withCredentials: true }
       );

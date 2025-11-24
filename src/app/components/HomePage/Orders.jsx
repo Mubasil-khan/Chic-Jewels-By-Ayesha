@@ -11,7 +11,7 @@ const Orders = () => {
   const FetchOrder = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/order/user`,
+        `https://chic-jewels-backend.onrender.com/order/user`,
         {
           params: { userId: user._id }, // ✅ backend needs userId
           withCredentials: true,

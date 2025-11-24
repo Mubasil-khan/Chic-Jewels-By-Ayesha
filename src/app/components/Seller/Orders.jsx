@@ -10,7 +10,7 @@ const Orders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/order/seller`,
+        `https://chic-jewels-backend.onrender.com/order/seller`,
         {
           withCredentials: true,
         }

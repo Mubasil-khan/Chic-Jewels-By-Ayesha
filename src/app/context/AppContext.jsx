@@ -23,7 +23,7 @@ export const AppContextProvider = ({ children }) => {
   const auth = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/AuthSeller`,
+        `https://chic-jewels-backend.onrender.com/seller/AuthSeller`,
         { withCredentials: true }
       );
 
@@ -43,7 +43,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchproducts = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/product/list`,
+        `https://chic-jewels-backend.onrender.com/product/list`,
         { withCredentials: true }
       );
       if (data) {
@@ -60,7 +60,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/isAuth`,
+        `https://chic-jewels-backend.onrender.com/user/isAuth`,
         { withCredentials: true }
       );
       if (data.success) {
@@ -108,7 +108,7 @@ export const AppContextProvider = ({ children }) => {
     const updateCartItem = async () => {
       try {
         const { data } = await axios.post(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/cart/update`,
+          `https://chic-jewels-backend.onrender.com/cart/update`,
           { userId: user._id, cart },
           { withCredentials: true }
         );

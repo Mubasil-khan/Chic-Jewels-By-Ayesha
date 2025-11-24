@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const login = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`,
+        `https://chic-jewels-backend.onrender.com/user/login`,
         {
           email,
           password,

@@ -10,7 +10,7 @@ const Navbar = () => {
   const logout = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/logout`,
+        `https://chic-jewels-backend.onrender.com/seller/logout`,
         { withCredentials: true }
       );
       if (data.success) {

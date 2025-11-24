@@ -19,7 +19,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/logout`,
+        `https://chic-jewels-backend.onrender.com/user/logout`,
 
         { withCredentials: true }
       );

@@ -34,7 +34,7 @@ const AddProduct = () => {
       }
 
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/product/add`,
+        `https://chic-jewels-backend.onrender.com/product/add`,
         formData,
         { withCredentials: true }
       );

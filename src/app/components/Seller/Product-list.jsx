@@ -10,7 +10,7 @@ const Productlist = () => {
   const productStock = async (id, instock) => {
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/product/stock`,
+        `https://chic-jewels-backend.onrender.com/product/stock`,
         { id, instock },
         { withCredentials: true }
       );
@@ -28,7 +28,7 @@ const Productlist = () => {
   const bestSellers = async (id, BestSellers) => {
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/product/bestSellers`,
+        `https://chic-jewels-backend.onrender.com/product/bestSellers`,
         { id, BestSellers },
         { withCredentials: true }
       );

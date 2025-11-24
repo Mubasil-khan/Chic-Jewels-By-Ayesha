@@ -42,7 +42,7 @@ const Cart = () => {
   const getAddress = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/address/get`,
+        `https://chic-jewels-backend.onrender.com/address/get`,
 
         { withCredentials: true }
       );
@@ -69,7 +69,7 @@ const Cart = () => {
         return toast.error("Please Select Address");
       }
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/order/createOrder`,
+        `https://chic-jewels-backend.onrender.com/order/createOrder`,
         {
           userId: user._id,
           items: cartArray.map((item) => ({

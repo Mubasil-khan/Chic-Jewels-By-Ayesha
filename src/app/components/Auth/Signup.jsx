@@ -14,7 +14,7 @@ const Signup = () => {
 
     try {
       const register = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register`,
+        `https://chic-jewels-backend.onrender.com/user/register`,
         { name, email, password },
         { withCredentials: true }
       );

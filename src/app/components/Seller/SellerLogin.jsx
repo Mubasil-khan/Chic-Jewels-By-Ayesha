@@ -12,8 +12,6 @@ const sellerLogin = () => {
 
   const [seller, setSeller] = useState(false);
 
-  console.log("NEXT_PUBLIC_BACKEND_URL", process.env.NEXT_PUBLIC_BACKEND_URL);
-
   const handalSubmit = async (event) => {
     try {
       event.preventDefault();
