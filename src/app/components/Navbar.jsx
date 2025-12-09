@@ -67,7 +67,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#EDF8F3] shadow-lg">
+    <div className="bg-[#F2DED5] shadow-lg">
       {hide && (
         <div class="text-center    text-white font-medium py-2 bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A]">
           <p className="relative">
@@ -88,7 +88,13 @@ const Navbar = () => {
       )}
       <div className="flex justify-between  items-center container mx-auto p-4 md:p-0 md:py-4  py-4">
         <Link href="/">
-          <Image src="/logo.svg" height={160} width={160} alt="Logo" />
+          <Image
+            src="/CJlogoo.png"
+            height={60}
+            width={60}
+            alt="Logo"
+            className="object-center"
+          />
         </Link>
 
         <ul className="lg:flex items-center gap-4 hidden">
@@ -97,8 +103,8 @@ const Navbar = () => {
               href="/"
               className={`  ${
                 pathName === "/"
-                  ? "text-[#44AE7C] text-lg font-semibold"
-                  : "text-zinc-500 text-md"
+                  ? "text-[#705436] text-lg font-semibold"
+                  : "text-[#8D7F79] text-md"
               }`}
             >
               Home
@@ -109,8 +115,8 @@ const Navbar = () => {
               href=""
               className={`  ${
                 pathName === ""
-                  ? "text-[#44AE7C] text-lg font-semibold"
-                  : "text-zinc-500 text-md"
+                  ? "text-[#705436] text-lg font-semibold"
+                  : "text-[#8D7F79] text-md"
               }`}
             >
               Categories
@@ -121,8 +127,8 @@ const Navbar = () => {
               href="/cart"
               className={`  ${
                 pathName === "/cart"
-                  ? "text-[#44AE7C] text-lg font-semibold"
-                  : "text-zinc-500 text-md"
+                  ? "text-[#705436] text-lg font-semibold"
+                  : "text-[#8D7F79] text-md"
               }`}
             >
               cart
@@ -134,8 +140,8 @@ const Navbar = () => {
               href="/allproduct"
               className={`  ${
                 pathName === "/allproduct"
-                  ? "text-[#44AE7C] text-lg font-semibold"
-                  : "text-zinc-500 text-md"
+                  ? "text-[#705436] text-lg font-semibold"
+                  : "text-[#8D7F79] text-md"
               }`}
             >
               All Product
@@ -146,8 +152,8 @@ const Navbar = () => {
               href=""
               className={`  ${
                 pathName === ""
-                  ? "text-[#44AE7C] text-lg font-semibold"
-                  : "text-zinc-500 text-md"
+                  ? "text-[#705436] text-lg font-semibold"
+                  : "text-[#8D7F79] text-md"
               }`}
             >
               Contact Us
@@ -169,7 +175,7 @@ const Navbar = () => {
           {!user ? (
             <Link
               href="/login"
-              className="py-1 px-4 md:px-6 bg-[#44AE7C] text-white text-lg rounded-3xl"
+              className="py-1 px-4 md:px-6 bg-[#705436] text-[#F2DED5] text-lg rounded-3xl"
             >
               Login
             </Link>

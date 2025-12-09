@@ -13,7 +13,7 @@ const Orders = () => {
       const { data } = await axios.get(
         `https://chic-jewels-backend.onrender.com/order/user`,
         {
-          params: { userId: user._id }, // ✅ backend needs userId
+          params: { userId: user._id },
           withCredentials: true,
         }
       );

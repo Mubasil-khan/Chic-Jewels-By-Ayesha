@@ -132,11 +132,11 @@ export const AppContextProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    if (seller === false) {
-      router.push("/seller/login");
-    }
-  }, [seller, router]);
+  // useEffect(() => {
+  //   if (seller === false) {
+  //     router.push("/seller/login");
+  //   }
+  // }, [seller, router]);
 
   console.log(seller);
   <ToastContainer />;

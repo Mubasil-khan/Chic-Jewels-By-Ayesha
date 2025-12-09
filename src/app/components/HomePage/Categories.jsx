@@ -12,9 +12,9 @@ const Categories = () => {
 
   return (
     <div className="container mx-auto p-4 sm:p-0 my-8 block">
-      <h4 className="text-3xl font-semibold text-zinc-600 flex flex-col gap-2 w-36 items-end my-5">
+      <h4 className="text-3xl font-semibold text-[#705436] flex flex-col gap-2 w-36 items-end my-5">
         Categories
-        <div className="border-2 w-18 rounded text-[#4FBF8B]"></div>
+        <div className="border-2 w-18 rounded text-[#F2DED5]"></div>
       </h4>
       <div className="flex items-center gap-2 justify-between">
         <Swiper
@@ -44,12 +44,12 @@ const Categories = () => {
                 >
                   <Image
                     src={items.image}
-                    height={130}
-                    width={130}
+                    height={100}
+                    width={100}
                     alt="itemsImage"
-                    className="group-hover:scale-110 duration-120 transition"
+                    className="group-hover:scale-110 duration-120 transition object-fill"
                   />
-                  <h6>{items.text}</h6>
+                  <h6 className="text-[#705436] font-semibold">{items.text}</h6>
                 </div>
               </Link>
             </SwiperSlide>

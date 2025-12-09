@@ -69,6 +69,13 @@ import vanilla_muffins_image from "./vanilla_muffins_image.png";
 import quinoa_image from "./quinoa_image.png";
 import brown_rice_image from "./brown_rice_image.png";
 import barley_image from "./barley_image.png";
+import Ring from './Ring.png';
+import necklace from './necklace.png';
+import bracelet from './bracelet.png';
+import earrings from './earrings.png';
+import combos from './combos.png';
+import giftsets from './giftsets.png';
+import watch from './watch.png';
 
 export const assets = {
   logo,
@@ -102,46 +109,47 @@ export const assets = {
 
 export const categories = [
   {
-    text: "Organic veggies",
+    text: "Rings",
     path: "Vegetables",
-    image: organic_vegitable_image,
-    bgColor: "#FEF6DA",
+    image: Ring,
+    bgColor: "#F2DED5",
   },
   {
-    text: "Fresh Fruits",
+    text: "Bracelets",
     path: "Fruits",
-    image: fresh_fruits_image,
-    bgColor: "#FEE0E0",
+    image: bracelet,
+    bgColor: "#F2DED5",
   },
+
   {
-    text: "Cold Drinks",
-    path: "Drinks",
-    image: bottles_image,
-    bgColor: "#F0F5DE",
-  },
-  {
-    text: "Instant Food",
+    text: "Earrings",
     path: "Instant",
-    image: maggi_image,
-    bgColor: "#E1F5EC",
+    image: earrings,
+    bgColor: "#F2DED5",
   },
   {
-    text: "Dairy Products",
+    text: "Combos",
     path: "Dairy",
-    image: dairy_product_image,
-    bgColor: "#FEE6CD",
+    image: combos,
+    bgColor: "#F2DED5",
   },
   {
-    text: "Bakery & Breads",
+    text: "Necklaces",
+    path: "Drinks",
+    image: necklace,
+    bgColor: "#F2DED5",
+  },
+  {
+    text: "Watchs",
     path: "Bakery",
-    image: bakery_image,
-    bgColor: "#E0F6FE",
+    image: watch,
+    bgColor: "#F2DED5",
   },
   {
-    text: "Grains & Cereals",
+    text: "Gifting Sets",
     path: "Grains",
-    image: grain_image,
-    bgColor: "#F1E3F9",
+    image: giftsets,
+    bgColor: "#F2DED5",
   },
 ];
 
