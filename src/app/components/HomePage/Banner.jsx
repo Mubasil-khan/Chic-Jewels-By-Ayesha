@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <div className="relative w-full mt-10 md:h-[500px] container mx-auto mb-4 block">
+    <div className="relative w-full  mt-10 h-[500px] container mx-auto md:mb-4">
       {/* Desktop Banner Image */}
       <Image
         src="/banner01.png"
@@ -16,7 +16,7 @@ const Banner = () => {
 
       {/* Mobile Banner Image */}
       <Image
-        src="/main_banner_bg_sm.png"
+        src="/mobanner.png"
         alt="Banner"
         fill
         className="object-cover rounded-xl md:hidden"
@@ -25,14 +25,15 @@ const Banner = () => {
 
       {/* Text Section */}
       <div
-        className="absolute md:top-[25%] md:left-[6%] flex flex-col bottom-[20%] 
-        md:text-start md:justify-start text-center w-full md:w-fit justify-center 
-        items-center md:items-start gap-6"
+        className="absolute top-35 left-8 md:top-[25%] md:left-[6%] flex flex-col bottom-[20%] 
+        md:text-start md:justify-start   md:w-fit  
+         md:items-start gap-6"
       >
         <h4 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-snug text-[#1F1F1F]">
-          Minimal Jewelry That Never <br /> Loses Its Shine
+          Minimal Jewelry That Never <br className="hidden sm:block" /> Loses
+          Its Shine
           <br />
-          <p className="text-xl">
+          <p className="text-xl mt-2">
             Premium Anti-Tarnish Pieces Made for Everyday Wear
           </p>
         </h4>

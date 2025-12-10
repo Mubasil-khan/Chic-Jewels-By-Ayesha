@@ -24,10 +24,10 @@ const BestSellers = () => {
   // };
   return (
     product && (
-      <div className="container mx-auto my-8 block">
-        <h4 className="text-3xl font-semibold text-zinc-600 flex flex-col gap-2 w-39 items-end my-5">
+      <div className="container mx-auto p-4 sm:p-0 my-0  block">
+        <h4 className="text-3xl font-semibold text-[#705436] flex flex-col gap-2 w-39 items-end mb-5">
           Best Sellers
-          <div className="border-2 w-18 rounded text-[#4FBF8B]"></div>
+          <div className="border-2 w-18 rounded text-[#F2DED5]"></div>
         </h4>
         <Swiper
           spaceBetween={30}

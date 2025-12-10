@@ -16,7 +16,7 @@ export default function Home() {
       <Categories />
       <BestSellers product={product[0]} />
       <CenterBanner />
-      <NewsLetter />
+      {/* <NewsLetter /> */}
 
     </div>
   );

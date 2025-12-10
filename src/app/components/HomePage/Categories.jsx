@@ -11,8 +11,8 @@ const Categories = () => {
   const toSlug = (text) => text.toLowerCase().replace(/\s+/g, "-"); // "Fresh Fruits" -> "fresh-fruits"
 
   return (
-    <div className="container mx-auto p-4 sm:p-0 my-8 block">
-      <h4 className="text-3xl font-semibold text-[#705436] flex flex-col gap-2 w-36 items-end my-5">
+    <div className="container mx-auto p-4 sm:p-0 mt-4 md:mt-8 md:my-6 block">
+      <h4 className="text-3xl font-semibold text-[#705436] flex flex-col gap-2 w-36 items-end mb-5 md:my-5">
         Categories
         <div className="border-2 w-18 rounded text-[#F2DED5]"></div>
       </h4>

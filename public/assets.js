@@ -76,6 +76,7 @@ import earrings from './earrings.png';
 import combos from './combos.png';
 import giftsets from './giftsets.png';
 import watch from './watch.png';
+import { Sparkles, BadgePercent, Heart, Truck } from "lucide-react";
 
 export const assets = {
   logo,
@@ -187,26 +188,27 @@ export const footerLinks = [
 
 export const features = [
   {
-    icon: delivery_truck_icon,
-    title: "Fastest Delivery",
-    description: "Groceries delivered in under 30 minutes.",
+    icon: <Truck />,
+    title: "Fast Delivery",
+    description: "Beautiful jewellery delivered to your doorstep quickly and safely.",
   },
   {
-    icon: leaf_icon,
-    title: "Freshness Guaranteed",
-    description: "Fresh produce straight from the source.",
+    icon: <Sparkles />,
+    title: "Premium Quality",
+    description: "Every piece crafted with attention to detail and flawless finishing.",
   },
   {
-    icon: coin_icon,
-    title: "Affordable Prices",
-    description: "Quality groceries at unbeatable prices.",
+    icon: <BadgePercent />,
+    title: "Affordable Luxury",
+    description: "Modern minimal jewellery at prices that fit your budget.",
   },
   {
-    icon: trust_icon,
+    icon: <Heart />,
     title: "Trusted by Thousands",
-    description: "Loved by 10,000+ happy customers.",
+    description: "Loved by 10,000+ happy customers across the country.",
   },
 ];
+
 
 export const dummyProducts = [
   // Vegetables
