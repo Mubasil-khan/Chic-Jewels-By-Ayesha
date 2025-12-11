@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import Cart from "../components/HomePage/Cart";
 
@@ -132,11 +132,15 @@ export const AppContextProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  // useEffect(() => {
-  //   if (seller === false) {
-  //     router.push("/seller/login");
-  //   }
-  // }, [seller, router]);
+  const pathname = usePathname();
+  console.log("pathname", pathname.startsWith("/seller"));
+  if (pathname.startsWith("/seller")) {
+    useEffect(() => {
+      if (seller === false) {
+        router.push("/seller/login");
+      }
+    }, [seller, router]);
+  }
 
   console.log(seller);
   <ToastContainer />;

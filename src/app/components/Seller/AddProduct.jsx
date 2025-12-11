@@ -150,13 +150,13 @@ const AddProduct = () => {
           >
             <option value="">Select Category</option>
             {[
-              "Vegetables",
-              "Fruits",
-              "Drinks",
-              "Instant",
-              "Dairy",
-              "Bakery",
-              "Grains",
+              "Rings",
+              "Bracelets",
+              "Earrings",
+              "Combos",
+              "Necklaces",
+              "Watchs",
+              "Gifting Sets",
             ].map((item, index) => (
               <option key={index} value={item}>
                 {item}
@@ -197,7 +197,7 @@ const AddProduct = () => {
           </div>
         </div>
 
-        <button className="px-8 py-2.5 bg-[#4FBF8B] text-white font-medium rounded">
+        <button className="px-8 py-2.5 bg-[#F2DED5] text-#705436 font-medium rounded">
           ADD
         </button>
       </form>

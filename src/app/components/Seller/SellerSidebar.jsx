@@ -12,7 +12,7 @@ const SellerSidebar = () => {
           href="/seller/add-product"
           className={`flex items-center py-3 px-4 gap-3 hover:bg-gray-100 ${
             pathName === "/seller/add-product" &&
-            "bg-[#EDF8F3]  border-r-6 border-[#4FBF8B] "
+            "bg-[#F2DED5]  border-r-6 border-[#705436] text-[#705436] font-semibold"
           }`}
         >
           <Image src="/add_icon.svg" height={30} width={30} alt="Add" />
@@ -23,7 +23,7 @@ const SellerSidebar = () => {
           href="/seller/product-list"
           className={`flex items-center py-3 px-4 gap-3 hover:bg-gray-100 ${
             pathName === "/seller/product-list" &&
-            "bg-[#EDF8F3]  border-r-6 border-[#4FBF8B] "
+            "bg-[#F2DED5]  border-r-6 border-[#705436] text-[#705436] font-semibold"
           }`}
         >
           <Image
@@ -39,7 +39,7 @@ const SellerSidebar = () => {
           href="/seller/orders"
           className={`flex items-center py-3 px-4 gap-3 hover:bg-gray-100 ${
             pathName === "/seller/orders" &&
-            "bg-[#EDF8F3]  border-r-6 border-[#4FBF8B] "
+            "bg-[#F2DED5]  border-r-6 border-[#705436] text-[#705436] font-semibold"
           }`}
         >
           <Image src="/order_icon.svg" height={30} width={30} alt="Orders" />

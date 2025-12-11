@@ -60,7 +60,7 @@ const sellerLogin = () => {
         >
           <h1 class="text-gray-900 text-3xl mt-10 font-medium">
             {" "}
-            <span className="text-[#44AE7C]">Seller</span> Login
+            <span className="text-[#705436]">Seller</span> Login
           </h1>
           <p class="text-gray-500 text-sm mt-2">Please sign in to continue</p>
           <div class="flex items-center w-full mt-10 bg-white border  border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2">
@@ -114,7 +114,7 @@ const sellerLogin = () => {
 
           <button
             type="submit"
-            class="mt-2 w-full h-11 rounded-full text-white bg-[#44AE7C] cursor-pointer hover:opacity-90 transition-opacity"
+            class="mt-2 w-full h-11 rounded-full text-[#705436] bg-[#F2DED5] cursor-pointer hover:opacity-90 transition-opacity"
           >
             Login
           </button>

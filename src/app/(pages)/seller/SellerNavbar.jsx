@@ -53,8 +53,14 @@ const Navbar = () => {
 
   return (
     <div className="flex sticky top-0 w-full items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white">
-      <Link href="/">
-        <Image src="/logo.svg" height={150} width={150} alt="logo" />
+      <Link href="/seller">
+        <Image
+          src="/CJlogoo.png"
+          height={60}
+          width={60}
+          alt="Logo"
+          className="object-center"
+        />
       </Link>
       <div className="flex items-center gap-5 text-gray-500">
         <p>Hi! Admin</p>

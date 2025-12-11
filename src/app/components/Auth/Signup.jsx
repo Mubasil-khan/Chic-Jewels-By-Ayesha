@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import Image from "next/image";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -31,9 +32,21 @@ const Signup = () => {
   return (
     <div className="flex justify-center h-screen items-center">
       <div className="bg-white text-gray-500 max-w-96 mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
-          <span className="text-[#4FBF8B]">User</span> Sign Up
+        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 flex items-center justify-between">
+          <Link href="/">
+            <Image
+              src="/CJlogoo.png"
+              height={60}
+              width={60}
+              alt="Logo"
+              className="object-center"
+            />
+          </Link>
+          <span className="text-[#705436]">Sign Up</span>
         </h2>
+        {/* <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
+          <span className="text-[#4FBF8B]">User</span> Sign Up
+        </h2> */}
         <form method="post">
           <input
             id="name"
@@ -63,7 +76,7 @@ const Signup = () => {
           <button
             type="submit"
             onClick={handalSignup}
-            className="w-full mb-3 bg-[#4FBF8B] py-2.5 rounded-full text-white cursor-pointer"
+            className="w-full mb-3 bg-[#F2DED5] py-2.5 rounded-full text-[#705436] cursor-pointer font-semibold text-lg"
           >
             signup
           </button>
@@ -74,7 +87,7 @@ const Signup = () => {
             Login
           </Link>
         </p>
-        <button
+        {/* <button
           type="button"
           className="w-full flex items-center gap-2 justify-center mt-5 bg-black py-2.5 rounded-full text-white"
         >
@@ -95,7 +108,7 @@ const Signup = () => {
             alt="googleFavicon"
           />
           signup in with Apple
-        </button>
+        </button> */}
       </div>
       <ToastContainer />
     </div>

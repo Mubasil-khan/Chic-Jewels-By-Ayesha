@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,8 +37,17 @@ const Login = () => {
   return (
     <div className="flex justify-center h-screen items-center">
       <div className="bg-white text-gray-500 max-w-96 mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
-          <span className="text-[#4FBF8B]">User</span> Login
+        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800 flex items-center justify-between">
+          <Link href="/">
+            <Image
+              src="/CJlogoo.png"
+              height={60}
+              width={60}
+              alt="Logo"
+              className="object-center"
+            />
+          </Link>
+          <span className="text-[#705436]">Login</span>
         </h2>
         <form>
           <input
@@ -57,13 +67,13 @@ const Login = () => {
             required
           />
           <div className="text-right py-4">
-            <a className="text-blue-600 underline" href="#">
+            {/* <a className="text-blue-600 underline" href="#">
               Forgot Password
-            </a>
+            </a> */}
           </div>
           <button
             type="submit"
-            className="w-full mb-3 bg-[#4FBF8B] py-2.5 rounded-full text-white cursor-pointer"
+            className="w-full mb-3 bg-[#F2DED5] py-2.5 rounded-full text-[#705436] cursor-pointer font-semibold text-lg"
             onClick={handalLogin}
           >
             Log in
@@ -75,7 +85,7 @@ const Login = () => {
             Signup
           </Link>
         </p>
-        <button
+        {/* <button
           type="button"
           className="w-full flex items-center gap-2 justify-center mt-5 bg-black py-2.5 rounded-full text-white"
         >
@@ -96,7 +106,7 @@ const Login = () => {
             alt="googleFavicon"
           />
           Log in with Apple
-        </button>
+        </button> */}
       </div>
       <ToastContainer />
     </div>
