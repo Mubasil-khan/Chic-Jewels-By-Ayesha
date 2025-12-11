@@ -106,7 +106,7 @@ const BestSellers = () => {
                       >
                         {!cart[product._id] ? (
                           <button
-                            className="flex items-center justify-center cursor-pointer gap-1 bg-[#F2DED5] border border-[#705436] md:w-[80px] w-[64px] h-[34px] rounded text-[#4FBF8B] font-medium"
+                            className="flex items-center justify-center cursor-pointer gap-1 bg-[#F2DED5] border border-[#705436] md:w-[80px] w-[64px] h-[34px] rounded text-[#705436] font-medium"
                             onClick={() => {
                               addToCart(product._id);
                             }}
