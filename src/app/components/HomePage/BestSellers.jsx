@@ -91,22 +91,22 @@ const BestSellers = () => {
                         height={13}
                         width={13}
                       />
-                      <p>({product.rating})</p>
+                      <p>(5{product.rating})</p>
                     </div>
                     <div className="flex items-end justify-between mt-3">
-                      <p className="md:text-xl text-base font-medium text-[#4FBF8B]">
-                        ${product.offerPrice}{" "}
+                      <p className="md:text-xl text-base font-medium text-[#705436]">
+                        ₹{product.offerPrice}{" "}
                         <span className="text-gray-500/60 md:text-sm text-xs line-through">
-                          ${product.price}
+                          ₹{product.price}
                         </span>
                       </p>
                       <div
-                        className="text-[#4FBF8B]"
+                        className="text-[#705436]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {!cart[product._id] ? (
                           <button
-                            className="flex items-center justify-center cursor-pointer gap-1 bg-[#EDF8F3] border border-[#4FBF8B] md:w-[80px] w-[64px] h-[34px] rounded text-[#4FBF8B] font-medium"
+                            className="flex items-center justify-center cursor-pointer gap-1 bg-[#F2DED5] border border-[#705436] md:w-[80px] w-[64px] h-[34px] rounded text-[#4FBF8B] font-medium"
                             onClick={() => {
                               addToCart(product._id);
                             }}
@@ -114,7 +114,7 @@ const BestSellers = () => {
                             <ShoppingCart className="h-4.5 w-4.5" /> Add
                           </button>
                         ) : (
-                          <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-[#EDF8F3] rounded select-none">
+                          <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-[#F2DED5] rounded select-none">
                             <button
                               onClick={() => {
                                 removeCart(product._id);

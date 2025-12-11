@@ -20,13 +20,13 @@ const Categories = () => {
   const { categories } = useParams();
 
   const categoryMap = {
-    "organic-veggies": "Vegetables",
-    "fresh-fruits": "Fruits",
-    "cold-drinks": "Drinks",
-    "instant-food": "instant",
-    "dairy-products": "dairy",
-    "bakery-%26-breads": "Bakery",
-    "grains-%26-cereals": "Grains",
+    rings: "rings",
+    bracelets: "bracelets",
+    earrings: "earrings",
+    combos: "combos",
+    necklaces: "necklaces",
+    watchs: "watchs",
+    "gifting-sets": "gifting-sets",
   };
 
   const FilterData = product.filter(

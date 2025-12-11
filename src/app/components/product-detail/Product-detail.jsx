@@ -36,7 +36,7 @@ const ProductDetail = () => {
         <p>
           <span>Home</span> / <span>Products</span> /
           <span> {ProductDetail.category}</span> /
-          <span className="text-[#4FBF8B]"> {ProductDetail.name}</span>
+          <span className="text-[#705436]"> {ProductDetail.name}</span>
         </p>
 
         <div className="flex flex-col md:flex-row gap-16 mt-4">
@@ -123,7 +123,7 @@ const ProductDetail = () => {
                   addToCart(ProductDetail._id);
                   route.push("/cart");
                 }}
-                className="w-full py-3.5 cursor-pointer font-medium bg-[#4FBF8B] text-white hover:bg-[#4fbf8bda] transition"
+                className="w-full py-3.5 cursor-pointer font-medium bg-[#F2DED5] text-[#705436] hover:bg-[#F2DED5]/80 transition"
               >
                 Buy now
               </button>
@@ -132,9 +132,9 @@ const ProductDetail = () => {
         </div>
       </div>
       <div>
-        <h4 className="text-3xl font-semibold text-zinc-600 flex flex-col gap-2 w-58 items-end my-8">
+        <h4 className="text-3xl font-semibold text-[#705436] flex flex-col gap-2 w-58 items-end my-8">
           Related Products
-          <div className="border-2 w-30 rounded text-[#4FBF8B]"></div>
+          <div className="border-2 w-30 rounded text-[#F2DED5]"></div>
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 gap-10 ">
           {product

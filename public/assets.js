@@ -111,44 +111,44 @@ export const assets = {
 export const categories = [
   {
     text: "Rings",
-    path: "Vegetables",
+    path: "rings",
     image: Ring,
     bgColor: "#F2DED5",
   },
   {
     text: "Bracelets",
-    path: "Fruits",
+    path: "bracelets",
     image: bracelet,
     bgColor: "#F2DED5",
   },
 
   {
     text: "Earrings",
-    path: "Instant",
+    path: "earrings",
     image: earrings,
     bgColor: "#F2DED5",
   },
   {
     text: "Combos",
-    path: "Dairy",
+    path: "combos",
     image: combos,
     bgColor: "#F2DED5",
   },
   {
     text: "Necklaces",
-    path: "Drinks",
+    path: "necklaces",
     image: necklace,
     bgColor: "#F2DED5",
   },
   {
     text: "Watchs",
-    path: "Bakery",
+    path: "watchs",
     image: watch,
     bgColor: "#F2DED5",
   },
   {
     text: "Gifting Sets",
-    path: "Grains",
+    path: "gifting-sets",
     image: giftsets,
     bgColor: "#F2DED5",
   },
